@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESRD Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+        <!-- Add favicon (logo) -->
+    <link rel="icon" href="logo.jpg" type="image/png">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <h1>ESRD</h1>
+                </div>
+            </div>
+            <div class="sidebar-content">
+                <div class="sidebar-group">
+                    <div class="sidebar-group-label">Menu</div>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menu-item active">
+                            <a href="#" class="sidebar-menu-button">
+                                <i class="fa-solid fa-gamepad"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                      <!--  <li class="sidebar-menu-item">
+                            <a href="#" class="sidebar-menu-button">
+                                <i class="fa-solid fa-video"></i>
+                                <span>Live Matches</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a href="#" class="sidebar-menu-button">
+                                <i class="fa-solid fa-trophy"></i>
+                                <span>Tournaments</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a href="#" class="sidebar-menu-button">
+                                <i class="fa-solid fa-users"></i>
+                                <span>Teams</span>
+                            </a>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="avatar">
+                        <img src="usericon.png" alt="User Avatar">
+                    </div>
+                    <div class="user-info">
+                        <p class="user-name">Individual</p>
+                        <p class="user-status">Basic Gamer</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="search-container">
+                    <i class="fa-solid fa-search search-icon"></i>
+                    <input type="search" placeholder="Search games, tournaments..." class="search-input">
+                </div>
+                <div class="header-actions">
+                    <button class="icon-button">
+                        <i class="fa-solid fa-bell"></i>
+                    </button>
+                    <div class="avatar">
+                        <img src="usericon.png" alt="User Avatar">
+                    </div>
+                </div>
+                <button id="sidebar-toggle" class="sidebar-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <div class="page-header">
+                    <h2>Dashboard</h2>
+                    <button class="primary-button">
+                        <i class="fa-solid fa-trophy"></i>
+                        Register for Tournament
+                    </button>
+                </div>
+
+                <!-- Tabs -->
+                <div class="tabs">
+                    <div class="tab-list">
+                        <button class="tab-button active" data-tab="live">Live Now</button>
+                        <button class="tab-button" data-tab="upcoming">Upcoming</button>
+                        <button class="tab-button" data-tab="tournaments">Tournaments</button>
+                    </div>
+
+                    <!-- Live Tab Content -->
+                    <div class="tab-content active" id="live-tab">
+                        <div class="card-grid">
+                            <!-- Featured Match Card -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Featured Match</h3>
+                                    <p class="card-description">Not Started Yet</p>
+                                </div>
+                                <div class="card-content">
+                                    <div class="video-container">
+                                        <iframe 
+                                            src="https://www.youtube.com/embed/" 
+                                            title="YouTube video player" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                    <div class="video-info">
+                                        <div class="video-stats">
+                                            <span class="badge">LIVE</span>
+                                            <span class="viewers"> 0 viewers</span>
+                                        </div>
+                                        <button class="secondary-button">Watch</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Popular Streams Card -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Popular Streams</h3>
+                                    <p class="card-description">Top gaming content right now</p>
+                                </div>
+                               <!-- <div class="card-content">
+                                    <div class="stream-list">
+                                        <div class="stream-item">
+                                            <div class="stream-thumbnail">
+                                                <img src="https://via.placeholder.com/96x64" alt="Stream thumbnail 1">
+                                            </div>
+                                            <div class="stream-info">
+                                                <h4>Championship Series #1</h4>
+                                                <p>GameStreamer1</p>
+                                            </div>
+                                            <span class="viewer-count">45K</span>
+                                        </div>
+                                        <div class="stream-item">
+                                            <div class="stream-thumbnail">
+                                                <img src="https://via.placeholder.com/96x64" alt="Stream thumbnail 2">
+                                            </div>
+                                            <div class="stream-info">
+                                                <h4>Championship Series #2</h4>
+                                                <p>GameStreamer2</p>
+                                            </div>
+                                            <span class="viewer-count">32K</span>
+                                        </div>
+                                        <div class="stream-item">
+                                            <div class="stream-thumbnail">
+                                                <img src="https://via.placeholder.com/96x64" alt="Stream thumbnail 3">
+                                            </div>
+                                            <div class="stream-info">
+                                                <h4>Championship Series #3</h4>
+                                                <p>GameStreamer3</p>
+                                            </div>
+                                            <span class="viewer-count">28K</span>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="card-footer">
+                                    <button class="text-button">View All Streams</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Tab Content -->
+                    <div class="tab-content" id="upcoming-tab">
+                        <div class="card-grid three-columns">
+                            <!-- Upcoming Match Cards -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Upcoming Match #1</h3>
+                                    <p class="card-description">Starting in 2 hours</p>
+                                </div>
+                                <div class="card-content">
+                                    <div class="match-teams">
+                                        <div class="team">
+                                            <div class="team-avatar">T1</div>
+                                            <p>Team 1</p>
+                                        </div>
+                                        <div class="vs">VS</div>
+                                        <div class="team">
+                                            <div class="team-avatar">T4</div>
+                                            <p>Team 4</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="secondary-button full-width">Set Reminder</button>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Upcoming Match #2</h3>
+                                    <p class="card-description">Starting in 4 hours</p>
+                                </div>
+                                <div class="card-content">
+                                    <div class="match-teams">
+                                        <div class="team">
+                                            <div class="team-avatar">T2</div>
+                                            <p>Team 2</p>
+                                        </div>
+                                        <div class="vs">VS</div>
+                                        <div class="team">
+                                            <div class="team-avatar">T5</div>
+                                            <p>Team 5</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="secondary-button full-width">Set Reminder</button>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Upcoming Match #3</h3>
+                                    <p class="card-description">Starting in 6 hours</p>
+                                </div>
+                                <div class="card-content">
+                                    <div class="match-teams">
+                                        <div class="team">
+                                            <div class="team-avatar">T3</div>
+                                            <p>Team 3</p>
+                                        </div>
+                                        <div class="vs">VS</div>
+                                        <div class="team">
+                                            <div class="team-avatar">T6</div>
+                                            <p>Team 6</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="secondary-button full-width">Set Reminder</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tournaments Tab Content -->
+                    <div class="tab-content" id="tournaments-tab">
+                        <div class="card-grid">
+                            <!-- Tournament Registration Card -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Register for Tournament</h3>
+                                    <p class="card-description">Join the next big gaming event</p>
+                                </div>
+                                <div class="card-content">
+                                    <form class="tournament-form">
+                                        <div class="form-group">
+                                         <!--   <label for="team-name">Team Name</label>
+                                          <input type="text" id="team-name" placeholder="Enter your team name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="game">Game</label>
+                                            <input type="text" id="game" placeholder="Select game">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="players">Number of Players</label>
+                                            <input type="number" id="players" placeholder="Enter number of players">
+                                        </div>
+                                    </form>
+                                </div> -->
+                                <div class="card-footer">
+                                    <a href="https://forms.gle/zXcNS8WywtUe1K2t8" class="primary-button full-width">Register For ESRD League</a>
+                                </div>
+                            </div>
+
+                            <!-- Upcoming Tournaments Card -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Upcoming Tournaments</h3>
+                                    <p class="card-description">Don't miss these events</p>
+                                </div>
+                                <div class="card-content">
+                                    <div class="tournament-list">
+                                        <div class="tournament-item">
+                                            <div class="tournament-info">
+                                                <h4> ESRD League</h4>
+                                                <p>Ending in 1 April</p>
+                                            </div>
+                                            <span class="badge primary">Registration Open</span>
+                                        </div>
+                                        <div class="tournament-item">
+                                            <div class="tournament-info">
+                                                <h4> GAME FEAST CHAMPIONSHIP S2</h4>
+                                                <p>Not Decided Yet</p>
+                                            </div>
+                                            <span class="badge secondary">Coming Soon</span>
+                                        </div>
+                                        <div class="tournament-item">
+                                            <div class="tournament-info">
+                                                <h4> Glory Rush</h4>
+                                                <p>Not Decided Yet</p>
+                                            </div>
+                                            <span class="badge secondary">Coming Soon</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="text-button">View All Tournaments</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+    
+    
+</body>
+</html>
