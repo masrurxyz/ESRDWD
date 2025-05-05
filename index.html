@@ -1,537 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESRD Game Division</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Hotjar Tracking Code for Site 5362643 (name missing) -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:5362643,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
-        <!-- Add favicon (logo) -->
-    <link rel="icon" href="logo.jpg" type="image/png">
-    <style>
-        @font-face {
-  font-family: 'gff';
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ESRD Game Division</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+ @font-face {
+  font-family: 'Gff';
   src: url('font.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
-        /* Reset and base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'gff', sans-serif;
-        }
-
-        body {
-            background-color: #000;
-            color: #fff;
-            min-height: 100vh;
-            overflow-x: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        /* Background glow effect */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(132, 255, 56, 0.15), transparent 70%);
-            z-index: 0;
-        }
-
-        /* Main container */
-        .container {
-            position: relative;
-            width: 90%;
-            max-width: 1200px;
-            height: 90vh;
-            border: 1px solid #2a2a2a;
-            border-radius: 16px;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            z-index: 1;
-        }
-
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .menu-btn {
-            background: none;
-            border: none;
-            color: #888;
-            cursor: pointer;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-
-        .menu-btn:hover {
-            color: #fff;
-        }
-
-        .logo {
-            color: #84ff38;
-            font-size: 0.875rem;
-            letter-spacing: 2px;
-            font-weight: 500;
-        }
-
-        .contact-btn {
-            padding: 0.5rem 1.5rem;
-            border: 1px solid #2a2a2a;
-            background: none;
-            color: #fff;
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            text-decoration: none;
-        }
-
-        .contact-btn:hover {
-            background-color: rgba(132, 255, 56, 0.1);
-        }
-
-        /* Main content */
-        .content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 2rem;
-        }
-
-        .text-content {
-            width: 50%;
-            z-index: 10;
-        }
-
-        .prod-text {
-            color: #888;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .title {
-            color: #fff;
-            font-size: 6rem;
-            font-weight: 700;
-            letter-spacing: -0.05em;
-            margin-bottom: 1.5rem;
-            line-height: 1;
-        }
-
-        .quote {
-            margin-bottom: 2rem;
-        }
-
-        .quote-highlight {
-            color: #84ff38;
-            font-size: 0.875rem;
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-        }
-
-        .quote-text {
-            color: #888;
-            font-size: 0.75rem;
-        }
-
-        .quote-text span {
-            color: #fff;
-        }
-
-        .discover-btn {
-            display: inline-block;
-            padding: 0.75rem 2rem;
-            border: 1px solid #2a2a2a;
-            background: none;
-            color: #fff;
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            text-decoration: none;
-        }
-
-        .discover-btn:hover {
-            background-color: rgba(132, 255, 56, 0.1);
-        }
-
-        .image-container {
-            width: 50%;
-            height: 500px;
-            position: relative;
-        }
-
-        .character-img {
-            position: absolute;
-            right: 0;
-            height: 100%;
-            object-fit: contain;
-            object-position: right;
-        }
-
-        /* Footer */
-        footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .copyright {
-            color: #555;
-            font-size: 0.75rem;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-icon {
-            color: #888;
-            font-size: 1rem;
-            transition: color 0.3s;
-        }
-
-        .social-icon:hover {
-            color: #fff;
-        }
-
-        /* Decorative elements */
-        .decor-left {
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 300px;
-            width: 300px;
-            border-left: 1px solid #2a2a2a;
-            border-top: 1px solid #2a2a2a;
-            opacity: 0.3;
-        }
-
-        .decor-right {
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 300px;
-            width: 300px;
-            border-right: 1px solid #2a2a2a;
-            border-bottom: 1px solid #2a2a2a;
-            opacity: 0.3;
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .scroll-line {
-            width: 1px;
-            height: 2rem;
-            background-color: #2a2a2a;
-        }
-
-        .scroll-dot {
-            width: 0.75rem;
-            height: 0.75rem;
-            border: 1px solid #2a2a2a;
-            border-radius: 50%;
-            margin-top: 0.5rem;
-        }
-
-        /* Login Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 100;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: #111;
-            border: 1px solid #2a2a2a;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 400px;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            color: #888;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .close-modal:hover {
-            color: #fff;
-        }
-
-        .login-form h2 {
-            color: #84ff38;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #888;
-            font-size: 0.875rem;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 0.75rem;
-            background-color: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            color: #fff;
-            border-radius: 4px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #84ff38;
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 0.75rem;
-            background-color: #84ff38;
-            color: #000;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .login-btn:hover {
-            background-color: #6cd42e;
-        }
-
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .content {
-                flex-direction: column;
-            }
-
-            .text-content, .image-container {
-                width: 100%;
-            }
-
-            .text-content {
-                margin-bottom: 2rem;
-            }
-
-            .title {
-                font-size: 4rem;
-            }
-
-            .image-container {
-                height: 350px;
-            }
-
-            .character-img {
-                position: relative;
-                width: 100%;
-            }
-        }
-    </style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Gff', sans-serif;
+      background: #ffffff;
+      color: #000000;
+      line-height: 1.6;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+    header {
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 20px 0;
+    }
+    .logo {
+      width: 50px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      gap: 30px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: #f9f9f9;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    .btn {
+      display: inline-block;
+      background: #000;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #333;
+    }
+    section {
+      padding: 60px 20px;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .info-section p,
+    .contact-section p {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 10px;
+    }
+    .team-section {
+      background: #f4f4f4;
+    }
+    .team-members {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+    }
+    .member {
+      text-align: center;
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      width: 200px;
+    }
+    .member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+    footer {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+      <img src="logo.png" alt="ESRD Logo" class="logo" />
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <section class="hero">
     <div class="container">
-        <!-- Header -->
-        <header>
-            <button class="menu-btn" id="menuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="logo">ESRD GAME DIVISION</div>
-            <a href="index.html" class="contact-btn">CONTACT</a>
-        </header>
-
-        <!-- Main content -->
-        <div class="content">
-            <div class="text-content">
-                <div class="prod-text">LEGENDS CHOOSE ESRD™</div>
-                <h1 class="title">ESRD</h1>
-                <div class="quote">
-                    <div class="quote-highlight">" THERE IS A BEAST "</div>
-                    <div class="quote-text">INSIDE ALL OF THE <span>GAMER</span></div>
-                </div>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfIlk8swW6Ff75tPOKOfH1g5lMBa9eBZY6NchRipCq8cKxZxw/viewform?usp=send_form" class="discover-btn">DISCOVER</a>
-            </div>
-            <div class="image-container">
-                <img src="mid.png" alt="ESRD character" class="character-img">
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <footer>
-            <div class="copyright">© <span id="current-year"></span> RESERVED FOR ESRD PRODUCTIONS LIMITED</div>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/share/18r66U4KVL/" class="social-icon"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/esrd.gd?igsh=MTJkd2tvYnBmOHkxOA==" class="social-icon"><i class="fab fa-instagram"></i></a>
-                  <a href="https://discord.gg/UgkSeEvUT7" class="social-icon"><i class="fab fa-discord"></i></a>
-                <a href="https://youtube.com/@esrdgamedivision?si=Q6dsPvWDZMIjs6SD" class="social-icon"><i class="fab fa-youtube"></i></a>
-                
-            </div>
-        </footer>
-
-        <!-- Decorative elements -->
-        <div class="decor-left"></div>
-        <div class="decor-right"></div>
-
-        <!-- Scroll indicator -->
-        <div class="scroll-indicator">
-            <div class="scroll-line"></div>
-            <div class="scroll-dot"></div>
-        </div>
+      <h1>Welcome to ESRD Game Division</h1>
+      <p>Organizing Free Fire Esports Tournaments</p>
+      <a href="base.apk" class="btn" id="downloadBtn">Download Our App</a>
     </div>
+  </section>
 
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeModal">
-                <i class="fas fa-times"></i>
-            </button>
-            <form class="login-form" id="loginForm">
-                <h2>Login</h2>
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit" class="login-btn">Login</button>
-            </form>
-        </div>
+  <section id="about" class="info-section">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>ESRD Game Division is dedicated to organizing competitive Free Fire esports tournaments. We aim to bring together gamers and provide an exciting platform for showcasing talent.</p>
     </div>
-    
-    
-        <audio autoplay loop>
-        <source src="bg.mp3" type="audio/mpeg">
-        <source src="background-music.ogg" type="audio/ogg">
-        Your browser does not support the audio element.
-    </audio>
+  </section>
 
-    <!-- JavaScript -->
-    <script>
-        // Set current year
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+  <section id="team" class="team-section">
+    <div class="container">
+      <h2>Team Behind ESRD</h2>
+      <div class="team-members">
+        <div class="member">
+          <img src="user.jpg" alt="CEO" />
+          <h3>Masrur Ahmmed</h3>
+          <p>CEO</p>
+        </div>
+        <div class="member">
+          <img src="user.jpg" alt="Admin" />
+          <h3>Humaun Kobir</h3>
+          <p>Head Of Management</p>
+        </div>
+        <div class="member">
+          <img src="user.jpg" alt="Admin" />
+          <h3>Muktadir Maruf</h3>
+          <p>Management Member</p>
+        </div>
+        <!-- Add more team members as needed -->
+      </div>
+    </div>
+  </section>
 
-        // Modal functionality
-        const menuBtn = document.getElementById('menuBtn');
-        const loginModal = document.getElementById('loginModal');
-        const closeModal = document.getElementById('closeModal');
-        const loginForm = document.getElementById('loginForm');
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Email: esrdgamedivision@gmail.com</p>
+      <p>Phone: None</p>
+    </div>
+  </section>
 
-        // Open modal when menu button is clicked
-        menuBtn.addEventListener('click', function() {
-            loginModal.style.display = 'flex';
-        });
-
-        // Close modal when close button is clicked
-        closeModal.addEventListener('click', function() {
-            loginModal.style.display = 'none';
-        });
-
-        // Close modal when clicking outside the modal content
-        window.addEventListener('click', function(event) {
-            if (event.target === loginModal) {
-                loginModal.style.display = 'none';
-            }
-        });
-
-        // Handle login form submission
-        loginForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            // Check if username and password are both "1234"
-            if (username === 'Individual' && password === '1234') {
-                // Redirect to 1234.HTML
-                window.open('dashboard.html', '_blank');
-            } else {
-                alert('Invalid username or password. Try Contacting With ESRD Game Division.');
-            }
-        });
-    </script>
-    
-       <script>
-        // Wait for user interaction to bypass autoplay restrictions
-        document.body.addEventListener('click', function() {
-            const audio = document.querySelector('audio');
-            audio.play();
-        });
-    </script>
-    
-    
-    
-    <!-- Start of LiveChat (www.livechat.com) code -->
-<script>
-    window.__lc = window.__lc || {};
-    window.__lc.license = 19091214;
-    window.__lc.integration_name = "manual_channels";
-    window.__lc.product_name = "livechat";
-    ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
-</script>
-<noscript><a href="https://www.livechat.com/chat-with/19091214/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
-<!-- End of LiveChat code -->
-
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 ESRD Game Division. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
