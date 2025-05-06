@@ -115,6 +115,99 @@
       object-fit: cover;
       margin-bottom: 10px;
     }
+  .chat-widget {
+  font-family: 'Gff', sans-serif;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+  font-family: Arial, sans-serif;
+}
+
+.chat-header {
+  font-family: 'Gff', sans-serif;
+  background-color: #000000;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.chat-box {
+  padding: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.message {
+  font-family: 'Gff', sans-serif;
+  max-width: 80%;
+  padding: 8px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.user {
+  font-family: 'Gff', sans-serif;
+  background-color: #f0f0f0;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.bot {
+  background-color: #000;
+  color: white;
+  align-self: flex-start;
+}
+
+/* Bot Icon Button */
+.chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #fff;
+  border-radius: 50%;
+  padding: 8px;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.chat-toggle:hover {
+  transform: scale(1.1);
+}
+
+.bot-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  animation: bounce 1.5s infinite;
+}
+
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%     { transform: translateY(-6px); }
+}
     footer {
       background: #000;
       color: #fff;
@@ -161,12 +254,12 @@
           <p>CEO</p>
         </div>
         <div class="member">
-          <img src="user.jpg" alt="Admin" />
+          <img src="shanto.jpg" alt="Admin" />
           <h3>Humaun Kobir</h3>
           <p>Head Of Management</p>
         </div>
         <div class="member">
-          <img src="user.jpg" alt="Admin" />
+          <img src="maruf.jpg" alt="Admin" />
           <h3>Muktadir Maruf</h3>
           <p>Management Member</p>
         </div>
@@ -183,10 +276,94 @@
     </div>
   </section>
 
+  <!-- Chat Container -->
+<div class="chat-widget" id="chatWidget">
+  <div class="chat-header" onclick="toggleChat()">Chat Support</div>
+<div class="chat-box" id="chatBox">
+  <div class="message user" onclick="sendQuestion('How To join ESRDS tournament?')">How To join ESRDS tournament?</div>
+  <div class="message user" onclick="sendQuestion('How To Download YAH app?')">How To Download YAH app?</div>
+  <div class="message user" onclick="sendQuestion('Support Info?')">Support Info?</div>
+</div>
+</div>
+
+<audio id="sendSound" src="send.mp3"></audio>
+<audio id="receiveSound" src="receive.mp3"></audio>
+
+<!-- Bot Icon -->
+<div class="chat-toggle" onclick="toggleChat()">
+  <img src="logo.png" alt="Bot Icon" class="bot-icon">
+</div>
+
   <footer>
     <div class="container">
       <p>&copy; 2025 ESRD Game Division. All rights reserved.</p>
     </div>
   </footer>
+
+<script>
+function toggleChat() {
+  const chat = document.getElementById('chatWidget');
+  chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
+}
+
+function sendQuestion(question) {
+  const chatBox = document.getElementById('chatBox');
+
+  const userMsg = document.createElement('div');
+  userMsg.className = 'message user';
+  userMsg.textContent = question;
+  chatBox.appendChild(userMsg);
+
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  setTimeout(() => {
+    const botMsg = document.createElement('div');
+    botMsg.className = 'message bot';
+    botMsg.textContent = getAnswer(question);
+    chatBox.appendChild(botMsg);
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }, 600);
+}
+
+function getAnswer(q) {
+  switch (q) {
+    case 'How To join ESRDS tournament?':
+      return 'To join ESRDS tournament you have to check the ESRDS official Discord where they release new tournaments daily. Also, you can play weekly scream by paying them via YAH app.';
+    case 'How To Download YAH app?':
+      return 'To download the YAH app, please click "Download App" in the top.';
+    case 'Support Info?':
+      return 'Mail - esrdgamedivision@gmail.com\nDiscord - https://discord.gg/Jj2nZrVGgE';
+    default:
+      return 'Sorry, I do not understand that question.';
+  }
+}
+function sendQuestion(question) {
+  const chatBox = document.getElementById('chatBox');
+
+  // Play send sound
+  document.getElementById('sendSound').play();
+
+  const userMsg = document.createElement('div');
+  userMsg.className = 'message user';
+  userMsg.textContent = question;
+  chatBox.appendChild(userMsg);
+
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  setTimeout(() => {
+    const botMsg = document.createElement('div');
+    botMsg.className = 'message bot';
+    botMsg.textContent = getAnswer(question);
+    chatBox.appendChild(botMsg);
+
+    // Play receive sound
+    document.getElementById('receiveSound').play();
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }, 600);
+}
+
+
+</script>
 </body>
 </html>
