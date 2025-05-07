@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ESRD</title>
+  <style>
+      @font-face {
+  font-family: 'gff';
+  src: url('font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'gff', sans-serif;
+      background: white;
+      color: black;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 40px;
+      margin-bottom: 50px;
+      font-size: 1.5em;
+      color: #000;
+    }
+
+    .upload-section {
+      margin-top: 30px;
+    }
+
+    .upload-btn {
+      background-color: #000;
+      border: none;
+      padding: 14px 28px;
+      font-size: 18px;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .upload-btn:hover {
+      background-color: #000;
+    }
+
+    #canvas {
+      margin-top: 40px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      max-width: 90%;
+    }
+
+    #download-btn {
+      font-family: 'gff', sans-serif;
+      margin-top: 25px;
+      background-color: #000;
+      border: none;
+      padding: 12px 26px;
+      font-size: 18px;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      display: none;
+    }
+
+    #download-btn:hover {
+      background-color: #000;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>ESRD Welcome Image</h1>
+
+  <div class="upload-section">
+    <input type="file" id="upload" accept="image/*" />
+    <label for="upload" class="upload-btn">Upload</label>
+  </div>
+
+  <canvas id="canvas" width="1200" height="1200"></canvas>
+
+  <div>
+    <button id="download-btn" onclick="downloadImage()">Download Final Image</button>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const uploadInput = document.getElementById("upload");
+    const downloadBtn = document.getElementById("download-btn");
+
+    const bg = new Image();
+    bg.src = "bg.jpg"; // 🖼️ Replace with your own background
+    bg.onload = () => {
+      ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
+    };
+
+    uploadInput.addEventListener("change", function () {
+      const file = this.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const userImg = new Image();
+        userImg.onload = function () {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
+
+          let imgWidth = userImg.width;
+          let imgHeight = userImg.height;
+          const maxSize = 350;
+
+          if (imgWidth > maxSize || imgHeight > maxSize) {
+            const scale = Math.min(maxSize / imgWidth, maxSize / imgHeight);
+            imgWidth *= scale;
+            imgHeight *= scale;
+          }
+
+          const x = (canvas.width - imgWidth) / 2;
+          const y = (canvas.height - imgHeight) / 2;
+          ctx.drawImage(userImg, x, y, imgWidth, imgHeight);
+
+          downloadBtn.style.display = "inline-block";
+        };
+        userImg.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    function downloadImage() {
+      const link = document.createElement("a");
+      link.download = "esrd-combined.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    }
+  </script>
+
+</body>
+</html>
