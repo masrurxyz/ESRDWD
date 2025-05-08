@@ -346,6 +346,23 @@
     </div>
     </section>
 
+  <section id="subscribe" style="background:#f4f4f4; padding:3rem 1rem; text-align:center; color:black; font-family:'Gff',sans-serif;">
+  <h2 style="font-size:2rem; margin-bottom:0.5rem;">Subscribe to Our Newsletter</h2>
+  <p style="font-size:1rem; color:#ccc;">Stay updated with <strong>ESRD Game Division</strong> news and events!</p>
+  
+  <form id="subscribeForm" style="margin-top:2rem; display:flex; justify-content:center; flex-wrap:wrap; gap:10px;">
+    <input type="email" id="emailInput" placeholder="Enter your email" required
+           style="padding:12px 15px; width:260px; max-width:100%; border:2px solid #111; border-radius:8px; background:transparent; color:#000; font-family: 'Gff', sans-serif;">
+    
+    <button type="submit"
+            style="padding:12px 25px; background:#000; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">
+      Subscribe
+    </button>
+  </form>
+
+  <p id="message" style="margin-top:1.5rem; font-size:1rem; color:#0f0;"></p>
+  </section>
+
   <!-- Chat Container -->
 <div class="chat-widget" id="chatWidget">
   <div class="chat-header" onclick="toggleChat()">Chat Support</div>
@@ -435,5 +452,42 @@ function sendQuestion(question) {
 
 
 </script>
+  <!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  emailjs.init("sZEQXv6HylMZxGCEs");
+</script>
+
+<script>
+  document.getElementById("subscribeForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const email = document.getElementById("emailInput").value;
+    const messageEl = document.getElementById("message");
+
+    // Save to Google Sheet via SheetDB
+    fetch("https://sheetdb.io/api/v1/4h90aoea9wve8", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ data: [{ email: email }] })
+    })
+    .then(response => {
+      if (!response.ok) throw new Error("Failed to save email to SheetDB.");
+      return emailjs.send("service_2videvi", "template_zmstt5c", {
+        to_email: email
+      });
+    })
+    .then(() => {
+      messageEl.style.color = "#0f0";
+      messageEl.innerText = "Thank you for subscribing! Check your inbox.";
+      document.getElementById("subscribeForm").reset();
+    })
+    .catch(error => {
+      console.error(error);
+      messageEl.style.color = "#f33";
+      messageEl.innerText = "Something went wrong. Please try again.";
+    });
+  });
+</script>
+  
 </body>
 </html>
