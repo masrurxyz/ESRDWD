@@ -254,12 +254,75 @@
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
   }
-    footer {
-      background: #000;
-      color: #fff;
-      text-align: center;
-      padding: 20px 0;
-    }
+.footer {
+  background-color: #111;
+  color: #fff;
+  padding: 40px 20px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  gap: 30px;
+}
+
+.footer-brand {
+  flex: 1 1 300px;
+}
+
+.footer-brand h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.footer-links {
+  display: flex;
+  flex: 2 1 400px;
+  gap: 40px;
+}
+
+.footer-links h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 13px;
+  color: #888;
+  border-top: 1px solid #222;
+  padding-top: 15px;
+}
+
   </style>
 </head>
 <body>
@@ -381,11 +444,40 @@
   <img src="logo.png" alt="Bot Icon" class="bot-icon">
 </div>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 ESRD Game Division. All rights reserved.</p>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h2>ESRD Game Division</h2>
+      <p>Organizing competitive Free Fire tournaments with integrity and innovation.</p>
     </div>
-  </footer>
+
+    <div class="footer-links">
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/esrd.gd" target="_blank">Instagram</a></li>
+          <li><a href="https://www.youtube.com/@esrdlive" target="_blank">YouTube</a></li>
+          <li><a href="https://www.facebook.com/yourpage" target="_blank">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 ESRD Game Division. All rights reserved.</p>
+  </div>
+</footer>
+
 
 <script>
 function toggleChat() {
